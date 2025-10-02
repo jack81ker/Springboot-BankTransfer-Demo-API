@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "f6db2538-238f-4a9e-a7ca-f62029b7261f",
+		"name": "Transfer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39201562",
+		"_collection_link": "https://wide55.postman.co/workspace/Demo~ed43f348-dbad-43a6-9b0c-7d1244e0e198/collection/39201562-f6db2538-238f-4a9e-a7ca-f62029b7261f?action=share&source=collection_link&creator=39201562"
+	},
+	"item": [
+		{
+			"name": "Transfer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth-token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fromAccount",
+							"value": "11401201221",
+							"type": "text"
+						},
+						{
+							"key": "toAccount",
+							"value": "34555512333",
+							"type": "text"
+						},
+						{
+							"key": "currency",
+							"value": "IDR",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "1.5",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/transfer/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"transfer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Transfer History",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth-token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/transfer?account=114012012212&page=0&size=10&sort=created_timestamp,desc",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"transfer"
+					],
+					"query": [
+						{
+							"key": "account",
+							"value": "114012012212"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						},
+						{
+							"key": "sort",
+							"value": "created_timestamp,desc"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
