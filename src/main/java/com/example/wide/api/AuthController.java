@@ -1,5 +1,6 @@
 package com.example.wide.api;
 
+import com.example.wide.security.Principal;
 import com.example.wide.utils.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
@@ -38,7 +39,9 @@ public class AuthController {
         );
 
         logger.info("Is {} authenticated : {}", username, auth.isAuthenticated());
-        return ResponseEntity.ok(Map.of("token", jwtUtil.generateToken(auth.getName())));
+        Principal principal = (Principal) auth.getPrincipal();
+
+        return ResponseEntity.ok(Map.of("token", jwtUtil.generateToken(auth.getName()), "userId", principal.getId()));
     }
 
 }
